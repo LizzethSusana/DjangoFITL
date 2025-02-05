@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .search-container {
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 60%;
+            padding: 15px;
+            font-size: 1.5em;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        ul {
+            margin-top: 20px;
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 15px;
+        }
+        a {
+            font-size: 1.2em;
+            color: #007BFF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <form method="GET">
+            <input type="text" name="q" value="{{ query }}" placeholder="Buscar en Google"> 
+            <button type="submit">Buscar</button>
+        </form>
+        
+        {% if results %}
+            <ul>
+                {% for item in results %}
+                    <li>
+                        <a href="{{ item.link }}">{{ item.title }}</a>
+                        <p>{{ item.snippet }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
