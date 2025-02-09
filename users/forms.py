@@ -29,7 +29,7 @@ class CustomUserCreationForm(UserCreationForm):
         )
     )
     password2 = forms.CharField(
-        label='Password confirmation',
+        label='Repite tu contraseña',
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',
@@ -52,11 +52,11 @@ class CustomUserCreationForm(UserCreationForm):
                     'title': 'Correo de la UTEZ'
                 }
             ),
-            'name': forms.TextInput(attrs={'class': 'form-control',
+            'name': forms.TextInput(attrs={'class': 'form-control','required': True,
             'placeholder': 'Name'
             }
             ),
-            'surname': forms.TextInput(attrs={'class': 'form-control',
+            'surname': forms.TextInput(attrs={'class': 'form-control','required': True,
             'placeholder': 'Surname'
             }),
             'control_number': forms.TextInput(
@@ -65,18 +65,20 @@ class CustomUserCreationForm(UserCreationForm):
                     'placeholder': 'Control number',
                     'required': True,
                     'pattern': '^\d{5}[a-zA-Z]{2}\d{3}$',
-                    'title': 'La matrícula debe ser de la UTEZ'
+                    'title': 'La matrícula debe ser de la UTEZ',
+                    'maxlength': '20'
                 }
             ),
-            'age': forms.NumberInput(attrs={'class': 'form-control',
+            'age': forms.NumberInput(attrs={'class': 'form-control','required':True,'pattern':'^[0-9]+$','title':'Ingrese solo numeros','max':'100','min':'1'
             }),
             'tel': forms.TextInput(
                 attrs={
                     'class': 'form-control',
                     'placeholder': 'Phone number',
                     'required': True,
-                    'pattern': '^[0-9]{10}$',
-                    'title': 'El número telefónico debe ser de 10 dígitos.'
+                    'pattern': '^[0-9\+-]{10,}$',
+                    'title': 'El número telefónico debe ser de 10 dígitos.',
+                    'maxlength':'15'
                 }
             ),
         }

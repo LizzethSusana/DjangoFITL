@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-t7bo@zb(@a808$gro#qg0%8ah#l(3m+4*%@hj1dc93gfyh*ck7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1', 'localhost',
@@ -137,6 +137,7 @@ HANDLER404 = 'app.views.error_404_view'
 HANDLER500 = 'app.views.error_500_view'
 
 SEARCH_ENGINE_ID=''
+GOOGLE_API_KEY=''
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
