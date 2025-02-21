@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Categorias</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <h1 class="text-center mb-4">Lista de Categorías</h1>
+        <button class="btn btn-primary mb-3" onclick="cargarCategorias()">Recargar Categorías</button>
+        <div id="categorias" class="row justify-content-center"></div>
+    </div>
+    
+    <script>
+        function cargarCategorias(){
+            let categoriasDiv = document.getElementById('categorias');
+            categoriasDiv.innerHTML = `<div class="text-center my-3"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Cargando...</span></div></div>`;
+            
+            fetch('/categorias/api/get')
+            .then(response => response.json())
+            .then(data => {
+                categoriasDiv.innerHTML = "";
+                data.forEach(categoria => {
+                    categoriasDiv.innerHTML += 
+                    `<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                        <div class="card shadow-sm border-0 rounded">
+                            <img src="${categoria.imagen}" class="card-img-top img-fluid rounded-top" style="height: 250px; object-fit: cover;" alt="${categoria.nombre}">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">${categoria.nombre}</h5>
+                            </div>
+                        </div>
+                    </div>`;
+                });
+            })
+            .catch(error => {
+                categoriasDiv.innerHTML = `<div class="alert alert-danger text-center">Error al cargar categorías</div>`;
+                console.error('Error: ', error);
+            });
+        }
+        
+        cargarCategorias();
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-t7bo@zb(@a808$gro#qg0%8ah#l(3m+4*%@hj1dc93gfyh*ck7
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '127.0.0.1', 'localhost',
+     '127.0.0.1', 'localhost',
 ]
 
 
@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
-    'users'
+    'users',
+    'productos',
+    'categorias',
 ]
 
 MIDDLEWARE = [
@@ -136,8 +138,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 HANDLER404 = 'app.views.error_404_view'
 HANDLER500 = 'app.views.error_500_view'
 
-SEARCH_ENGINE_ID=''
-GOOGLE_API_KEY=''
+SEARCH_ENGINE_ID='5379c3797756e4e8e'
+GOOGLE_API_KEY='AIzaSyB2zYT2Piq8kd8RsEAgL3eRev2hEd9j_oM'
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
